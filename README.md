@@ -1,6 +1,5 @@
 # AJAX的学习笔记(Node.js环境)
 AJAX学习的笔记，主要环境为Node.js
-# 尚硅谷Web前端Ajax教程初学者零基础入门到精通全套完整版（ajax最新版）
 
 课程地址：   https://www.bilibili.com/video/BV1WC4y1b78y
 
@@ -76,16 +75,43 @@ type：设置返回内容格式，xml、html、script、json、text、_default
 
 3. JSONP的使用
 
-   1. 动态的创建一个script标签
+   - 动态的创建一个script标签
 
-      ```js
-      var script = document.createElement("script");
-      ```
+   ```js
+   var script = document.createElement("script");
+   ```
 
-   2. 设置script的src，设置回调函数
+   - 设置script的src，设置回调函数
 
-      ~~~js
-      script.src = "http://locallhost:3000/textAJAX?callback=abc"
-      ~~~
+   ~~~js
+   script.src = "http://locallhost:3000/textAJAX?callback=abc"
+   ~~~
 
-      
+   
+
+### 3.2.2 CORS
+
+推荐阅读：
+
+- http://www.ruanyifeng.com/blog/2016/04/cors.html
+- https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS
+
+1. CORS是什么？
+
+   CORS (Cross-Origin Resource Sharing), 跨域资源共享。CORS 是官方的跨域解决方案，它的特点是不需要在客户端做任何特殊的操作，完全在服务器中进行处理，支持 get 和 post 等请求。跨域资源共享标准新增了一组 HTTP  首部字段（响应头），允许服务器声明哪些源站通过浏览器有权限访问哪些资源
+
+2. CORS怎么工作的？
+
+   CORS 是通过设置一个响应头来告诉浏览器，该请求允许跨域，浏览器收到该响应以后就会对响应放行。
+
+3. CORS 的使用
+
+   主要是服务端的设置：
+
+   ```js
+   rounter.get("/testAJAX",function(req, res){
+   
+   })
+   ```
+
+   

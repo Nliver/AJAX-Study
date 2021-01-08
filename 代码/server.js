@@ -135,6 +135,32 @@ app.all('/check-username', (request, response) =>{
 
 });
 
+//jQuery服务中的jsonp
+app.all('/jquery-jsonp-server', (request, response) =>{
+    // response.send('console.log("hello jsonp")');
+    const data = {
+        name: 'Nliver',
+        city: ['北京', '上海', '深圳']
+    };
+    //将数据转化为字符串
+    let str = JSON.stringify(data);
+    //接收 callback 参数
+    let cb = request.query.callback;
+
+    //返回结果
+    response.end(`${cb}(${str})`);
+
+});
+
+app.all('/cors-server', (request, response)=>{
+    //设置响应头
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Headers", '*');
+    response.setHeader("Access-Control-Allow-Method", '*');
+    // response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+
+    response.send('hello CORS');
+})
 //4. 监听端口启动服务
 app.listen(8000, () => {
     console.log("服务已经启动， 8000端口监听中....");

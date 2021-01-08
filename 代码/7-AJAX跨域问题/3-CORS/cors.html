@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS 跨域资源共享</title>
+    <style>
+        #result {
+            width: 200px;
+            height: 100px;
+            border: solid 1px #90b;
+        }
+    </style>
+</head>
+<body>
+    <button>发送请求</button>
+    <div id="result"></div>
+    <script>
+        const btn = document.querySelector('button');
+
+        btn.onclick = function(){
+            //1. 创建对象
+            const x = new XMLHttpRequest();
+            //2. 初始化设置
+            x.open('GET', "http://127.0.0.1:8000/cors-server");
+            //3. 发送
+            x.send();
+            //4. 绑定事件
+            x.onreadystatechange = function(){
+                if(x.readyState === 4){
+                    if(x.status >= 200 && x.status < 300){
+                        //输出响应体
+                        console.log(x.response);
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>
