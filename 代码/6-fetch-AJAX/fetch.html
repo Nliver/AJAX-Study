@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch 发送 AJAX请求</title>
+</head>
+<body>
+    <button>AJAX请求</button>
+    <script>
+        const btn = document.querySelector('button');
+
+        btn.onclick = function(){
+            fetch('http://127.0.0.1:8000/fetch-server?vip=10', {
+                //请求方法
+                method: 'POST',
+                //请求头
+                headers: {
+                    name: 'Nliver'
+                },
+                //请求体
+                body: 'username=admin&password=admin'
+            }).then(response => {
+                // console.log(response);
+                // return response.text();
+                return response.json();
+            }).then(response => {
+                console.log(response);
+            })
+        }
+    </script>
+</body>
+</html>

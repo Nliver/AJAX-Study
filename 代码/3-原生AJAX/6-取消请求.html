@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX 取消请求</title>
+</head>
+<body>
+    <button>点击发送</button>
+    <button>点击取消</button>
+    <script>
+        //获取元素对象
+        const btns = document.querySelectorAll('button');
+        let x = null;
+        btns[0].onclick = function () {
+            // const x = new XMLHttpRequest();
+            x = new XMLHttpRequest();
+            x.open('GET', 'http://127.0.0.1:8000/delay');
+            x.send();
+            
+        }
+
+        //abort （属于AJAX对象的一个方法）取消请求
+        //这里的 x 用 let 而不用const 好好思考一下 
+        btns[1].onclick = function () {
+            x.abort();
+            
+        }
+    </script>
+
+</body>
+</html>

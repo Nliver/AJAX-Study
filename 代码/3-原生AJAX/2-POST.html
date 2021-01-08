@@ -22,7 +22,7 @@
         //绑定事件 鼠标移动到上面
         result.addEventListener("mouseover", function(){
             // console.log("test");
-            //1. 创建对象
+            //1. 创建对象,发送请求
             const xhr = new XMLHttpRequest();
             //2. 初始化 设置请求类型与URL
             xhr.open('POST','http://127.0.0.1:8000/server');

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+</head>
+<body>
+    <h1>Nliver</h1>
+    <button>点击获取用户数据</button>
+    <script>
+        const btn = document.querySelector('button');
+
+        btn.onclick = function(){
+            const x = new XMLHttpRequest();
+            //这里因为是满足同源策略的，所以url可以简写
+            x.open("GET",'/data');
+            //发送
+            x.send();
+            //
+            x.onreadystatechange = function () {
+                if (x.readyState === 4) {
+                    if(x.status >= 200 && x.status < 300){
+                        console.log(x.response);
+                    }
+                    
+                }
+            }
+        }
+    </script>
+</body>
+</html>

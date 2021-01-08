@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原理演示</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 100px;
+            border: solid 1px #78a;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        //处理数据
+        function handle(data) {
+            //获取 result 元素
+            const result = document.getElementById('result');
+            result.innerHTML = data.name;
+
+        }
+    </script>
+    <!-- <script src="./js/app.js"></script> -->
+    <!-- <script src="http://127.0.0.1:5500/%E4%BB%A3%E7%A0%81/7-AJAX%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/2-JSONP/js/app.js"></script> -->
+    <script src="http://127.0.0.1:8000/jsonp-server"></script>
+</body>
+</html>

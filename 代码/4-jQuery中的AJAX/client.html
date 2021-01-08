@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 发送 AJAX 请求</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">jQuer发送AJAX请求</h2>
+        <button class="btn btn-primary">GET</button>
+        <button class="btn btn-danger">POST</button>
+        <button class="btn btn-info">通用型方法ajax</button>
+    </div>
+    <script>
+        $('button').eq(0).click(function(){
+            $.get('http://127.0.0.1:8000/jquery-server', {a:100, b:200}, function (data) {
+                console.log(data)
+            },'json');
+        })
+
+        $('button').eq(1).click(function(){
+            $.post('http://127.0.0.1:8000/jquery-server', {a:100, b:200}, function (data) {
+                console.log(data)
+            });
+        })
+
+        $('button').eq(2).click(function () {
+            $.ajax({
+                //url
+                url: 'http://127.0.0.1:8000/jquery-server',
+                //参数
+                data: {a:100, b:200},
+                //请求类型
+                type: 'GET',
+                //响应体结果设置
+                dataType: 'json',
+                //成功的回调
+                success: function (data) {
+                    console.log(data);
+                },
+                //超时时间
+                timeout: 2000,
+                //失败的回调
+                error: function(){
+                    console.log('出错拉~');
+                },
+                //头信息
+                headers: {
+                    c: 300,
+                    d: 400
+                }
+            });
+            
+        })
+
+    </script>
+</body>
+</html>
